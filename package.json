@@ -1,0 +1,34 @@
+{
+  "name": "frezc-statistics",
+  "version": "1.0.0",
+  "description": "0.1.0",
+  "main": "build/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "frezc",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Frezc/statistics.frezc.com.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Frezc/statistics.frezc.com/issues"
+  },
+  "homepage": "http://statistics.frezc.com",
+
+  "devDependencies": {
+    "css-loader": "^0.21.0",
+    "style-loader": "^0.13.0",
+    "vue-hot-reload-api": "^1.2.0",
+    "vue-html-loader": "^1.0.0",
+    "vue-loader": "^7.2.0",
+    "webpack": "^1.12.2",
+    "webpack-dev-server": "^1.12.0"
+  },
+
+  "dependencies": {
+    "vue": "^1.0.8",
+    "vue-router": "^0.7.5"
+  }
+}
