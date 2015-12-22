@@ -1,38 +1,42 @@
 <!DOCTYPE html>
 <html lang="zh">
+
 <head>
     <meta charset="UTF-8">
     <title>Anime Rank(Base on AnimeNewsNetwork, Bangumi and AnimeSachi)</title>
 </head>
+
 <body>
 
-        <div class="ui top attached tabular menu">
-            <div class="active item">标签页</div>
-            <div class="link item">标签页</div>
-        </div>
-            <div class="ui bottom attached loading tab segment">
-            <p></p>
-            <p></p>
-        </div>
+    <div class="ui top attached tabular menu">
+        <div class="active item">标签页</div>
+        <div class="link item">标签页</div>
+    </div>
 
-        <div class="ui mobile reversed celled centered grid container">
-            <div class="left floated four wide blue column">
-                <button class="ui button">hello</button>
-            </div>
-            <div class="two wide column">
-                <button class="ui button">hello</button>
-            </div>
-            <div class="four wide column">
-                <button class="ui button">hello</button>
-            </div>
-            <div class="four wide column">
-                <button class="ui button">hello</button>
-            </div>
-        </div>
-   
-    
+    <table id="mainContainer">
+
+        <tr v-for="anime in rank_show" track-by="rank">
+            <td class="center aligned">{{ anime.rank }}</td>
+            <td><a href="#">{{ anime.name_cn }}</a></td>
+            <td>{{ anime.score }}</td>
+            <td v-bind:class="{'disabled' : anime.bgm_score == 0}" data-content="{{ anime.bgm_votes }}人投票，热度排名{{ anime.bgm_pop_rank }}"
+            v-popup>{{ anime.bgm_score }}({{ anime.bgm_score_rank }})</td>
+            <td v-bind:class="{'disabled' : anime.ann_score == 0}" data-content="{{ anime.ann_votes }}人投票，热度排名{{ anime.ann_pop_rank }}"
+            v-popup>{{ anime.ann_score }}({{ anime.ann_score_rank }})</td>
+            <td v-bind:class="{'disabled' : anime.sati_score == 0}" data-content="{{ anime.sati_votes }}人投票，热度排名{{ anime.sati_pop_rank }}"
+            v-popup>{{ anime.sati_score }}({{ anime.sati_score_rank }})</td>
+        </tr>
+    </table>
+
+
     <link rel="stylesheet" type="text/css" href="libs/semantic/semantic.css">
     <script src="http://static.frezc.com/js/jquery-1.11.3.min.js"></script>
     <script src="libs/semantic/semantic.js"></script>
+    <script>
+        for(var i=0; i<2000; i++){
+            $('#mainContainer').append('<tr v-for="anime in rank_show" track-by="rank"> <td v-bind:class="{'disabled' : anime.bgm_score == 0}" data-content="{{ anime.bgm_votes }}人投票，热度排名{{ anime.bgm_pop_rank }}" v-popup>{{ anime.bgm_score }}({{ anime.bgm_score_rank }})</td> </tr>')
+        }
+    </script>
 </body>
+
 </html>
