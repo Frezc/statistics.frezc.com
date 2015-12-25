@@ -68,7 +68,7 @@ var main = new Vue({
 
         search: function (val, oldVal) {
             this.rank_filter = this.rank.filter(function (anime) {
-                return anime.name_cn.match(val)
+                return anime.name_cn.match(new RegExp(val, 'i'))
             })
             this.rank_show = this.rank_filter.slice(0, 50)
         },
