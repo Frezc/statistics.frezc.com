@@ -60,11 +60,11 @@
                         <td><a v-on:click.prevent="showDetail(anime)" href="#">{{ anime.name_cn }}</a></td>
                         <td style="color: teal;" v-bind:class="{'top': anime.rank <= 10}">{{ anime.score }}</td>
                         <td v-bind:class="{'disabled' : anime.bgm_score == 0, 'top': anime.bgm_score_rank <= 10}" data-content="{{ anime.bgm_votes }}人投票，热度排名{{ anime.bgm_pop_rank }}"
-                        v-popup>{{ anime.bgm_score }}({{ anime.bgm_score_rank }})</td>
+                        v-popup>{{ anime.bgm_score }} ({{ anime.bgm_score_rank == 0 ? ' - ' : anime.bgm_score_rank }})</td>
                         <td v-bind:class="{'disabled' : anime.ann_score == 0, 'top': anime.ann_score_rank <= 10}" data-content="{{ anime.ann_votes }}人投票，热度排名{{ anime.ann_pop_rank }}"
-                        v-popup>{{ anime.ann_score }}({{ anime.ann_score_rank }})</td>
+                        v-popup>{{ anime.ann_score }} ({{ anime.ann_score_rank == 0 ? ' - ' : anime.ann_score_rank }})</td>
                         <td v-bind:class="{'disabled' : anime.sati_score == 0, 'top': anime.sati_score_rank <= 10}" data-content="{{ anime.sati_votes }}人投票，热度排名{{ anime.sati_pop_rank }}"
-                        v-popup>{{ anime.sati_score }}({{ anime.sati_score_rank }})</td>
+                        v-popup>{{ anime.sati_score }} ({{ anime.sati_score_rank == 0 ? ' - ' : anime.sati_score_rank }})</td>
                     </tr>
 
                     <tr class="positive" v-if="hasMore">
