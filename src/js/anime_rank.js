@@ -1,4 +1,4 @@
-// var Vue = require('vue')
+var Vue = require('vue')
 var AnimeRank = require('../components/anime-rank.vue')
 require('../css/anime_rank.css')
 
