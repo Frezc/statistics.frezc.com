@@ -52,8 +52,8 @@
         <div class="ui small modal" id="detail">
             <i class="close icon"></i>
             <div class="ui blue header">
-                {{ detail.loading ? 'Loading..' : 'Rank ' + (detail.show_index + 1) }}
-                <span class="ui teal right floated segment" style="color: teal;" v-if="!detail.loading">{{ rank[detail.show_index].score }}</span>
+                {{ detail.loading ? 'Loading..' : 'Rank ' + detail.show_rank }}
+                <span class="ui teal right floated segment" style="color: teal;" v-if="!detail.loading">{{ rank[detail.show_rank - 1].score }}</span>
             </div>
             <!--<div class="content" v-show="detail.loading">
                 <div class="ui icon message">
@@ -92,24 +92,24 @@
                         <tbody>
                             <tr>
                                 <td><a href="{{ detail.data.bgm_url }}" target="_blank">BGM</a></td>
-                                <td>{{ rank[detail.show_index].bgm_score }}</td>
-                                <td>{{ rank[detail.show_index].bgm_score_rank }}</td>
-                                <td>{{ rank[detail.show_index].bgm_votes }}</td>
-                                <td>{{ rank[detail.show_index].bgm_pop_rank }}</td>
+                                <td>{{ rank[detail.show_rank - 1].bgm_score }}</td>
+                                <td>{{ rank[detail.show_rank - 1].bgm_score_rank }}</td>
+                                <td>{{ rank[detail.show_rank - 1].bgm_votes }}</td>
+                                <td>{{ rank[detail.show_rank - 1].bgm_pop_rank }}</td>
                             </tr>
                             <tr>
                                 <td><a href="{{ detail.data.ann_url }}" target="_blank">ANN</a></td>
-                                <td>{{ rank[detail.show_index].ann_score }}</td>
-                                <td>{{ rank[detail.show_index].ann_score_rank }}</td>
-                                <td>{{ rank[detail.show_index].ann_votes }}</td>
-                                <td>{{ rank[detail.show_index].ann_pop_rank }}</td>
+                                <td>{{ rank[detail.show_rank - 1].ann_score }}</td>
+                                <td>{{ rank[detail.show_rank - 1].ann_score_rank }}</td>
+                                <td>{{ rank[detail.show_rank - 1].ann_votes }}</td>
+                                <td>{{ rank[detail.show_rank - 1].ann_pop_rank }}</td>
                             </tr>
                             <tr>
                                 <td><a href="{{ detail.data.sati_url }}" target="_blank">SATI</a></td>
-                                <td>{{ rank[detail.show_index].sati_score }}</td>
-                                <td>{{ rank[detail.show_index].sati_score_rank }}</td>
-                                <td>{{ rank[detail.show_index].sati_votes }}</td>
-                                <td>{{ rank[detail.show_index].sati_pop_rank }}</td>
+                                <td>{{ rank[detail.show_rank - 1].sati_score }}</td>
+                                <td>{{ rank[detail.show_rank - 1].sati_score_rank }}</td>
+                                <td>{{ rank[detail.show_rank - 1].sati_votes }}</td>
+                                <td>{{ rank[detail.show_rank - 1].sati_pop_rank }}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -135,7 +135,7 @@
 
                 detail: {
                     loading: true,
-                    show_index: -1,
+                    show_rank: 0,
                     data: {}
                 }
             }
@@ -191,7 +191,7 @@
 
             showDetail: function (anime) {
                 this.showDetailModal();
-                if (anime.rank != this.detail.show_index + 1) {
+                if (anime.rank != this.detail.show_rank) {
                     this.detail.loading = true;
                     $('#detailImage').attr('src', "build/placeholder.png");
                     $.ajax({
@@ -202,7 +202,7 @@
                             data.bgm_url = data.bgm_url.split(',')[0];
                             data.sati_url = data.sati_url.split(',')[0];
                             
-                            this.detail.show_index = anime.rank;
+                            this.detail.show_rank = anime.rank;
                             this.detail.data = data;
                             this.detail.loading = false;
                             
